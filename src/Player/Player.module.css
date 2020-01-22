@@ -1,0 +1,13 @@
+.icon {
+    width: 60px;
+    height: 60px;
+}
+
+.player {
+    display: inline-block;
+    border: 1px solid #333;
+}
+
+.name {
+    font-weight: bold;  
+}

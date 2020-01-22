@@ -1,0 +1,7 @@
+[01/21/2020]
+cardNumber inconsistency
+	!solved: move to render
+
+redundancy of player.card.sum
+
+last player can deal even when < 15

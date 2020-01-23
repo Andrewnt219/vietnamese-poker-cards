@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import classes from './App.module.css';
 import Player from './Player/Player'
 import InitGame from './InitGame/InitGame'
+import avatars from './Player/avatar/avatar.js'
 
 class App extends Component {
   state = {
-    /* Game stats */
+    /* Game resources */
     players: [],
     card: [
       1, 1, 1, 1,
@@ -25,29 +26,32 @@ class App extends Component {
     /* game controls */
     error: '',
     turn: 0,
-    gameEnd: false,
     /* display controls */
-    showInit: true,
-    showGame: false
+    phase: 0 // 0: Init, 1: Game, 2: End
   }
 
   /* Game initialization phase */
   /* Custom number of players */
   playerNumberHandler = (event) => {
     let playerCount = event.target.value, error = "";
-    if (playerCount > 15) {
-      error = "Maximum 15 players!"
-      playerCount = 15;
+    if (playerCount > 10) {
+      error = "Maximum 10 players!"
+      playerCount = 10;
+    }
+    /* Random avatar allocate */
+    for (let i = avatars.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [avatars[i], avatars[j]] = [avatars[j], avatars[i]];
     }
     const players = [];
+    let n = 0;
     for (let i = 0; i < playerCount; i++) {
       players.push({
-        asset: 200,
         id: `player-${i}`,
         name: `player-${i}`,
         card: [],
+        avatar: avatars[n++]
         /* cardNumber: 0, */ //remove due to inconsistent
-        bet: 50,
         /*  score: 0 */ //remove due to inconsistent
       })
     }
@@ -59,34 +63,32 @@ class App extends Component {
     players[index].name = event.target.value;
     this.setState({ players: players })
   }
-  gameStart = (event) => {
-    /* Start game with custom asset 
-    const players = [...this.state.players];
-    event.target.value === "Game Start!" ? players.map(player => {player.}) */
-
-    /* shuffle deck */
-    const card = [...this.state.card];
-    for (let i = card.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      [card[i], card[j]] = [card[j], card[i]];
-      console.log(j);
-    }
+  gameStart = () => {
+    if (this.state.playerCount > 1) {
+      /* shuffle deck */
+      const card = [...this.state.card];
+      for (let i = card.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [card[i], card[j]] = [card[j], card[i]];
+        console.log(j);
+      }
 
 
-    /* Distributes cards */
-    let players = [...this.state.players];
-    for (let i = 0; i < 2; i++) players = players.map(player => { player.card.push(card.pop()); return player });
+      /* Distributes cards */
+      let players = [...this.state.players];
+      for (let i = 0; i < 2; i++) players = players.map(player => { player.card.push(card.pop()); return player });
 
-    /* hide init */
-    /* display Game UI */
-    this.setState({ players: players, card: card, showInit: false, showGame: true, error:"" });
+      /* hide init & display game UI */
+      this.setState({ players: players, card: card, phase: 1, error: "" });
+    } else this.setState({ error: "There must be at least 2 players" })
 
   }
 
   /* Game phase */
   draw = () => {
     const players = [...this.state.players];
-    const activePlayer = players[this.utils.activePlayerIndex()];
+    const activePlayerIndex = this.state.turn % this.state.playerCount;
+    const activePlayer = players[activePlayerIndex];
 
     /* maximum 5 cards */
     if (activePlayer.card.length < 5) {
@@ -95,77 +97,75 @@ class App extends Component {
       /* calculate score */
       const score = activePlayer.card.reduce((score, cardValue) => score + cardValue)
       /* announce winner if card = 5 and value < 21 */
+      if (activePlayer.card.length === 5 && score <= 21) { }
+
       this.setState({ players: players, error: "" })
-    } else 
-      this.setState({error:"5 cards max!"})
+    } else
+      this.setState({ error: "5 cards max!" })
   }
 
   deal = () => {
     /* if last player then announce winner */
     if (this.state.turn === Number(this.state.playerCount - 1)) {
-      /* disable */
-      this.setState({ gameEnd: true, error:"" });
-      /* Result here */
+      /* End game */
+      this.setState({ phase: 2, error: "" });
     } else {
-      /* only deal if score > 16 */
       const players = [...this.state.players];
-      const activePlayer = players[this.utils.activePlayerIndex()];
-      if (activePlayer.card.reduce((score, cardValue) => score + cardValue) > 15) {
+      const activePlayerIndex = this.state.turn % this.state.playerCount
+      const activePlayer = players[activePlayerIndex];
+      /* only deal if score > 16 */
+      if (activePlayer.card.reduce((score, cardValue) => score + cardValue) > 15 || activePlayer.card.length === 5) {
         let turn = this.state.turn;
         turn++;
-        this.setState({ turn: turn, error:"" });
-      } else this.setState({error: "Score > 15 to deal"})
+        this.setState({ turn: turn, error: "" });
+      } else this.setState({ error: "Score > 15 to deal" })
     }
     /* set active */
   }
 
-  /* Utilities */
-  utils = {
-    joinClass: (...css) => css.join(' '),
-    activePlayerIndex: () => this.state.turn % this.state.playerCount
-  }
   render() {
-    /* Init UI */
-    let init = (
-      <div className={classes.init}>
-        <label htmlFor="">Numbers of players<br /><input type="number" max="15" onChange={this.playerNumberHandler} /></label>
-        <InitGame changeName={this.changeName} count={this.state.playerCount} players={[...this.state.players]} />
-        <button onClick={this.gameStart} value="Game Start">Game Start!</button>
-        <button onClick={this.gameStart} value="Quick Start">Quick Start</button>
-      </div>
-    );
-    if (!this.state.showInit) init = null;
-
-    /* Gaminng UI */
-    let game = null, playerComponent = null, btn = null;
-    if (this.state.showGame) {
-      playerComponent = [...this.state.players].map(player => {
-        const score = player.card.reduce((score, cardValue) => score + cardValue);
-        return (
-          <Player name={player.name} card={player.card} cardNumber={player.card.length} bet={player.bet} score={score > 21 ? "BUSTED" : score} />
+    let ui = null;
+    switch (this.state.phase) {
+      case 0:
+        ui = (
+          <div className={classes.init}>
+            <h3>Numbers of players</h3>
+            <input className={classes.inputNumber} type="number" max="10" onChange={this.playerNumberHandler} />
+            <button className={classes.startBtn} onClick={this.gameStart} value="Game Start!">Game Start!</button>
+            <InitGame changeName={this.changeName} count={this.state.playerCount} players={[...this.state.players]}  />
+          </div>
+        );
+        break;
+      case 1:
+        const playerComponent = [...this.state.players].map(player => {
+          const score = player.card.reduce((score, cardValue) => score + cardValue);
+          return (
+            <Player key={player.name} avatar={player.avatar} name={player.name} card={player.card} cardNumber={player.card.length} score={score > 21 ? "BUSTED" : player.card.length === 5 ? "WINNER" : score} />
+          )
+        }
         )
-      })
-      if (!this.state.gameEnd) btn = (
-        <div className={classes.buttonControls}>
-          <button className={classes.button} onClick={this.draw}>Draw</button>
-          <button className={this.utils.joinClass(classes.button, classes.red)} onClick={this.deal}>Deal</button>
-        </div>
-      )
-      game = (
-        <div className={classes.gameUI}>
-          {playerComponent}
-          {btn}
-        </div>
-      )
+        ui = (
+          <div className={classes.game}>
+            {playerComponent}
+            <button className={classes.button} onClick={this.draw}>Draw</button>
+            <button className={classes.button} onClick={this.deal}>Deal</button>
+          </div>
+        )
+        break;
+      case 2:
+        ui = (<p>End Game</p>);
+        break;
+      default:
+        ui = (<p>Whoops! Something went wrong ... </p>)
     }
-
-    /* Announcement phase */
-    let result = null;
     return (
       <div className={classes.App} >
-        {init}
-        {game}
-        {this.state.error}
+        <h1 className={classes.title}>Vietnamese Poker</h1>
+        <div className={classes.container}>
+          {ui}
+          <p className={classes.error}>{this.state.error}</p>
+        </div>
+
       </div>
     );
 

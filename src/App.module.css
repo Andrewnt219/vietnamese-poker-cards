@@ -1,15 +1,130 @@
+@import url('https://fonts.googleapis.com/css?family=Bangers|Lato&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great&display=swap');
+:root {
+    font-size: 1.2em;
+    font-family: 'Lato', sans-serif;
+    --black: #400101;
+    --white: #F2EFDF;
+    --red: #D90416;
+    --redder: #BF1B39;
+    --yellow: #F2B705;
+}
+
+html, body {
+    margin:0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: url(https://yea.edu.vn/wp-content/uploads/2016/01/tet-holiday-2016-slider.png) no-repeat;
+    overflow: hidden;
+}
 .App {
+}
+
+.title {
+    font-family: 'Fredericka the Great', cursive;
+    font-size: 3rem;
+    text-align: center;
+    margin:1rem auto 1rem auto;
+    color:  var(--yellow);
+    width: 40%;
+    text-shadow: 2px 2px 2px var(--redder);
+    font-weight: bold;
+}
+
+.container {
+    background-color: #fff;
+    width: 60rem;
+    height: 31rem;
+    box-shadow: 10px 10px 10px var(--black);
+    border-radius: 10px;
+    text-align: center;
+    margin: 0 auto 0 auto;
+    display: flex;
+    flex-direction: column;
 
 }
 
-.gameUI {
-    background-color: blanchedalmond;
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none; 
+    margin:0;
 }
 
-.button {
-    padding: 0.5rem;
+.inputNumber {
+    width: 2rem;
+    transform: translateX(1rem);
 }
 
-.red {
-    background: red;
+.init {
+flex:9;
 }
+
+.init h3 {
+    padding-top: 1rem;
+    font-weight: bold;
+    margin: 0 0 0.5rem 0;
+    color: var(--yellow);
+    flex:2;
+    display: inline-block;
+}
+
+button {
+    padding: 0.3rem;
+    border-radius: 5px;
+    border: 0;
+    box-shadow: 2px 2px 2px black;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+
+.startBtn {
+    height: 3rem;
+    width: 3rem;
+    display: inline-block;
+    transform: scale(1.2) translateX(2rem);
+    background-color:var(--red);
+    border-radius: 50%;
+    margin: auto;
+    z-index: 3;
+    outline: none;
+}
+
+button:active {
+    transform: scale(1.2) translate(2rem,4px);
+  }
+
+.error {
+    font-weight: bolder;
+    color: var(--redder);
+    flex:0.5;
+}
+
+/* Game phase */
+.game {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-auto-rows: minmax(200px, auto);
+}
+
+.game button {
+    border-radius: 0;
+    display: block;
+    box-shadow: none;
+    border: 1px solid black;
+    font-size: 2rem;
+}
+
+.game button:active {
+    transform: translateY(3px);
+}
+
+.game button:first-of-type {
+    background-color: green;
+}
+.game button:last-of-type {
+    background-color: red;
+
+}
+

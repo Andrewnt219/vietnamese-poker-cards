@@ -1,12 +1,13 @@
 import React from 'react';
 import classes from './InitGame.module.css'
+
 const initGame = (props) => {
-    let players =[], changeName = props.changeName;
+    let players =[];
     for (let i = 0; i < props.count; i++) {
         players[i] = (
-            <div className={classes.player} key={props.players[i].id}>
+            <div className={classes.player}>
                 <label htmlFor="">
-                    <p>Player {i + 1}'s name</p><input type="text" onChange={(event) => {changeName(event, i)}}/>
+                    <p classname={classes.p}>Player {i + 1}'s name</p><input className={classes.inputName} type="text" onChange={(event) => {props.changeName(event, i)}}/>
                 </label>
             </div>
         )

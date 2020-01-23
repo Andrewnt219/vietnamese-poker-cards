@@ -47,7 +47,7 @@ class App extends Component {
     let n = 0;
     for (let i = 0; i < playerCount; i++) {
       players.push({
-        id: `player-${i}`,
+        id: i,
         name: `player-${i}`,
         card: [],
         avatar: avatars[n++]
@@ -105,14 +105,13 @@ class App extends Component {
   }
 
   deal = () => {
+    const players = [...this.state.players];
+    const activePlayer = players[this.state.turn];
     /* if last player then announce winner */
-    if (this.state.turn === Number(this.state.playerCount - 1)) {
+    if (this.state.turn === Number(this.state.playerCount - 1) && players[this.state.playerCount - 1].card.reduce((score, cardValue) => score + cardValue) > 15) {
       /* End game */
       this.setState({ phase: 2, error: "" });
     } else {
-      const players = [...this.state.players];
-      const activePlayerIndex = this.state.turn % this.state.playerCount
-      const activePlayer = players[activePlayerIndex];
       /* only deal if score > 16 */
       if (activePlayer.card.reduce((score, cardValue) => score + cardValue) > 15 || activePlayer.card.length === 5) {
         let turn = this.state.turn;
@@ -120,7 +119,6 @@ class App extends Component {
         this.setState({ turn: turn, error: "" });
       } else this.setState({ error: "Score > 15 to deal" })
     }
-    /* set active */
   }
 
   render() {
@@ -139,8 +137,9 @@ class App extends Component {
       case 1:
         const playerComponent = [...this.state.players].map(player => {
           const score = player.card.reduce((score, cardValue) => score + cardValue);
+          const active = this.state.turn === Number(player.id);
           return (
-            <Player key={player.name} avatar={player.avatar} name={player.name} card={player.card} cardNumber={player.card.length} score={score > 21 ? "BUSTED" : player.card.length === 5 ? "WINNER" : score} />
+            <Player key={player.name} active={active} avatar={player.avatar} name={player.name} card={player.card} cardNumber={player.card.length} score={score > 21 ? "BUSTED" : player.card.length === 5 ? "WINNER" : score} />
           )
         }
         )

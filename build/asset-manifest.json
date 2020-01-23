@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/Vietnamese-Poker/static/css/main.fe930b13.chunk.css",
-    "main.js": "/Vietnamese-Poker/static/js/main.ad2603b0.chunk.js",
-    "main.js.map": "/Vietnamese-Poker/static/js/main.ad2603b0.chunk.js.map",
+    "main.css": "/Vietnamese-Poker/static/css/main.55faebb0.chunk.css",
+    "main.js": "/Vietnamese-Poker/static/js/main.edb7982b.chunk.js",
+    "main.js.map": "/Vietnamese-Poker/static/js/main.edb7982b.chunk.js.map",
     "runtime-main.js": "/Vietnamese-Poker/static/js/runtime-main.0fc368ef.js",
     "runtime-main.js.map": "/Vietnamese-Poker/static/js/runtime-main.0fc368ef.js.map",
-    "static/js/2.a568e48f.chunk.js": "/Vietnamese-Poker/static/js/2.a568e48f.chunk.js",
-    "static/js/2.a568e48f.chunk.js.map": "/Vietnamese-Poker/static/js/2.a568e48f.chunk.js.map",
+    "static/js/2.6885d9a1.chunk.js": "/Vietnamese-Poker/static/js/2.6885d9a1.chunk.js",
+    "static/js/2.6885d9a1.chunk.js.map": "/Vietnamese-Poker/static/js/2.6885d9a1.chunk.js.map",
     "index.html": "/Vietnamese-Poker/index.html",
-    "precache-manifest.2444267089a05f7ec04287cc072c87f0.js": "/Vietnamese-Poker/precache-manifest.2444267089a05f7ec04287cc072c87f0.js",
+    "precache-manifest.288e25155d1fdf48628654785c1f1bc8.js": "/Vietnamese-Poker/precache-manifest.288e25155d1fdf48628654785c1f1bc8.js",
     "service-worker.js": "/Vietnamese-Poker/service-worker.js",
-    "static/css/main.fe930b13.chunk.css.map": "/Vietnamese-Poker/static/css/main.fe930b13.chunk.css.map",
-    "static/js/2.a568e48f.chunk.js.LICENSE": "/Vietnamese-Poker/static/js/2.a568e48f.chunk.js.LICENSE",
+    "static/css/main.55faebb0.chunk.css.map": "/Vietnamese-Poker/static/css/main.55faebb0.chunk.css.map",
+    "static/js/2.6885d9a1.chunk.js.LICENSE": "/Vietnamese-Poker/static/js/2.6885d9a1.chunk.js.LICENSE",
     "static/media/001-shorthair cat.svg": "/Vietnamese-Poker/static/media/001-shorthair cat.a6f3aabb.svg",
     "static/media/002-cat.svg": "/Vietnamese-Poker/static/media/002-cat.7c75fd91.svg",
     "static/media/003-cat.svg": "/Vietnamese-Poker/static/media/003-cat.a2483f77.svg",
@@ -66,8 +66,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.0fc368ef.js",
-    "static/js/2.a568e48f.chunk.js",
-    "static/css/main.fe930b13.chunk.css",
-    "static/js/main.ad2603b0.chunk.js"
+    "static/js/2.6885d9a1.chunk.js",
+    "static/css/main.55faebb0.chunk.css",
+    "static/js/main.edb7982b.chunk.js"
   ]
 }

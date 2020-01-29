@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f60abefdec299376e5c266e934e77d93",
+    "revision": "220759c7b65174c7d91724c6088bcd3b",
     "url": "/Vietnamese-Poker/index.html"
   },
   {
-    "revision": "b249f198c808db19eab4",
-    "url": "/Vietnamese-Poker/static/css/main.c943dbc8.chunk.css"
+    "revision": "2831198f1824c484e98b",
+    "url": "/Vietnamese-Poker/static/css/main.6da5c4b9.chunk.css"
   },
   {
     "revision": "87b3fce83e894510064c",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Vietnamese-Poker/static/js/2.6885d9a1.chunk.js.LICENSE"
   },
   {
-    "revision": "b249f198c808db19eab4",
-    "url": "/Vietnamese-Poker/static/js/main.632b1891.chunk.js"
+    "revision": "2831198f1824c484e98b",
+    "url": "/Vietnamese-Poker/static/js/main.5c46bbae.chunk.js"
   },
   {
     "revision": "020f5ec216da06fc56f8",

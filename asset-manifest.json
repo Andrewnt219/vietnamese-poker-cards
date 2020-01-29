@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Vietnamese-Poker/static/css/main.c943dbc8.chunk.css",
-    "main.js": "/Vietnamese-Poker/static/js/main.632b1891.chunk.js",
-    "main.js.map": "/Vietnamese-Poker/static/js/main.632b1891.chunk.js.map",
+    "main.css": "/Vietnamese-Poker/static/css/main.6da5c4b9.chunk.css",
+    "main.js": "/Vietnamese-Poker/static/js/main.5c46bbae.chunk.js",
+    "main.js.map": "/Vietnamese-Poker/static/js/main.5c46bbae.chunk.js.map",
     "runtime-main.js": "/Vietnamese-Poker/static/js/runtime-main.0fc368ef.js",
     "runtime-main.js.map": "/Vietnamese-Poker/static/js/runtime-main.0fc368ef.js.map",
     "static/js/2.6885d9a1.chunk.js": "/Vietnamese-Poker/static/js/2.6885d9a1.chunk.js",
     "static/js/2.6885d9a1.chunk.js.map": "/Vietnamese-Poker/static/js/2.6885d9a1.chunk.js.map",
     "index.html": "/Vietnamese-Poker/index.html",
-    "precache-manifest.c40dcffc169354836fef273dc07d2bca.js": "/Vietnamese-Poker/precache-manifest.c40dcffc169354836fef273dc07d2bca.js",
+    "precache-manifest.14b0e0e7c1ebb5d7a6d9312cdec05a44.js": "/Vietnamese-Poker/precache-manifest.14b0e0e7c1ebb5d7a6d9312cdec05a44.js",
     "service-worker.js": "/Vietnamese-Poker/service-worker.js",
-    "static/css/main.c943dbc8.chunk.css.map": "/Vietnamese-Poker/static/css/main.c943dbc8.chunk.css.map",
+    "static/css/main.6da5c4b9.chunk.css.map": "/Vietnamese-Poker/static/css/main.6da5c4b9.chunk.css.map",
     "static/js/2.6885d9a1.chunk.js.LICENSE": "/Vietnamese-Poker/static/js/2.6885d9a1.chunk.js.LICENSE",
     "static/media/001-shorthair cat.svg": "/Vietnamese-Poker/static/media/001-shorthair cat.a6f3aabb.svg",
     "static/media/002-cat.svg": "/Vietnamese-Poker/static/media/002-cat.7c75fd91.svg",
@@ -67,7 +67,7 @@
   "entrypoints": [
     "static/js/runtime-main.0fc368ef.js",
     "static/js/2.6885d9a1.chunk.js",
-    "static/css/main.c943dbc8.chunk.css",
-    "static/js/main.632b1891.chunk.js"
+    "static/css/main.6da5c4b9.chunk.css",
+    "static/js/main.5c46bbae.chunk.js"
   ]
 }

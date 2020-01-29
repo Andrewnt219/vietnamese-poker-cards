@@ -128,7 +128,7 @@ class App extends Component {
         ui = (
           <div className={classes.init}>
             <h3>Numbers of players</h3>
-            <input className={classes.inputNumber} type="number" max="10" onChange={this.playerNumberHandler} />
+            <input autofocus className={classes.inputNumber} type="number" max="10" onChange={this.playerNumberHandler} />
             <button className={classes.startBtn} onClick={this.gameStart} value="Game Start!">Game Start!</button>
             <InitGame changeName={this.changeName} count={this.state.playerCount} players={[...this.state.players]}  />
           </div>
@@ -152,7 +152,7 @@ class App extends Component {
         )
         break;
       case 2:
-        ui = (<p>End Game</p>);
+        ui = (<p>End Game &lt;&lt;In Construction&gt;&gt;</p>);
         break;
       default:
         ui = (<p>Whoops! Something went wrong ... </p>)

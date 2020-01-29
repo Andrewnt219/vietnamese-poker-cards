@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Vietnamese-Poker/precache-manifest.288e25155d1fdf48628654785c1f1bc8.js"
+  "/Vietnamese-Poker/precache-manifest.c40dcffc169354836fef273dc07d2bca.js"
 );
 
 self.addEventListener('message', (event) => {
